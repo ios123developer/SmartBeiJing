@@ -2,7 +2,6 @@ package com.szzgkon.smartbeijing;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -14,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import com.szzgkon.smartbeijing.utils.PrefUtils;
 
 import java.util.ArrayList;
 
@@ -51,8 +52,7 @@ public class GuideActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //更新sp
-                SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
-                sp.edit().putBoolean("is_user_guide_showed",true).commit();
+                PrefUtils.setBoolean(GuideActivity.this,"is_user_guide_showed",true);
 
                 //跳转主页面
                 startActivity(new Intent(GuideActivity.this, MainActivity.class));

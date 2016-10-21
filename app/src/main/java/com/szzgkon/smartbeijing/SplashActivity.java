@@ -2,7 +2,6 @@ package com.szzgkon.smartbeijing;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -10,6 +9,8 @@ import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
+
+import com.szzgkon.smartbeijing.utils.PrefUtils;
 
 public class SplashActivity extends Activity {
 
@@ -77,9 +78,7 @@ public class SplashActivity extends Activity {
 
     private void jumpNextpage(){
 
-        //判断之前有没有显示过新手引导
-        SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
-        boolean userGuide = sp.getBoolean("is_user_guide_showed", false);
+       boolean userGuide = PrefUtils.getBoolean(this,"is_user_guide_showed",false);
         if(!userGuide){
             startActivity(new Intent(SplashActivity.this,GuideActivity.class));
 
