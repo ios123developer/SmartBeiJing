@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.szzgkon.smartbeijing.activity.SplashActivity"
+    tools:context="com.szzgkon.smartbeijing.SplashActivity"
     android:id="@+id/rl_root"
     android:background="@mipmap/splash_bg_newyear">
     <ImageView

@@ -1,6 +1,8 @@
-package com.szzgkon.smartbeijing.activity;
+package com.szzgkon.smartbeijing;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,8 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
-import com.szzgkon.smartbeijing.R;
 
 import java.util.ArrayList;
 
@@ -46,6 +46,20 @@ public class GuideActivity extends Activity {
         viewRedPoint = (View)findViewById(R.id.view_red_point);
 
         btn_start = (Button)findViewById(R.id.btn_start);
+
+        btn_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //更新sp
+                SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
+                sp.edit().putBoolean("is_user_guide_showed",true).commit();
+
+                //跳转主页面
+                startActivity(new Intent(GuideActivity.this, MainActivity.class));
+                finish();
+            }
+        });
+
 
         initViews();
         vpGuide.setAdapter(new GuideAdapter());
@@ -157,11 +171,11 @@ public class GuideActivity extends Activity {
          */
         @Override
         public void onPageSelected(int position) {
-            
-            if(position == 2){
-                btn_start.setVisibility(View.INVISIBLE);
-            }else {
+
+            if(position == mImageIds.length - 1){
                 btn_start.setVisibility(View.VISIBLE);
+            }else {
+                btn_start.setVisibility(View.INVISIBLE);
             }
         }
 
