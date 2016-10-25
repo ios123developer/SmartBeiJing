@@ -1,6 +1,14 @@
 package com.szzgkon.smartbeijing.base;
 
 import android.app.Activity;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.szzgkon.smartbeijing.MainActivity;
+import com.szzgkon.smartbeijing.R;
 
 /**
  * ===================================================
@@ -22,24 +30,54 @@ import android.app.Activity;
  
 public class BasePager {
     public Activity mActivity;
+    public View mRootView;
+
+    public TextView tvTitle;//标题对象
+
+    public FrameLayout flContent;//内容
+
+    public ImageButton btnMenu;//菜单按钮
 
     public BasePager(Activity activity){
 
         mActivity = activity;
-
+        initViews();
     }
 
     /**
      * 初始化布局
      */
     public void initViews(){
+        mRootView = View.inflate(mActivity, R.layout.base_pager,null);
+            tvTitle = (TextView) mRootView.findViewById(R.id.tv_title);
 
+            flContent = (FrameLayout) mRootView.findViewById(R.id.fl_content);
+
+        btnMenu = (ImageButton)mRootView.findViewById(R.id.btn_menu);
     }
+
+
 
     /**
      * 初始化数据
      */
     public void initData(){
+
+    }
+
+    //设置侧边栏开启或者关闭
+    public void setSlidingMenuEnable (boolean enable){
+        MainActivity mainUi = (MainActivity) mActivity;
+
+        SlidingMenu slidingMenu = mainUi.getSlidingMenu();
+        if(enable){
+            slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+
+        }else {
+            slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+
+        }
+
 
     }
 
