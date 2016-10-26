@@ -1,4 +1,4 @@
-package com.szzgkon.smartbeijing.menudetail;
+package com.szzgkon.smartbeijing.base.menudetail;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -19,15 +19,15 @@ import com.szzgkon.smartbeijing.base.BaseMenuDetailPager;
  *
  * 创建日期：16/10/26 上午10:21
  *
- * 描述：菜单详情页-组图
+ * 描述：菜单详情页-专题
  *
  * 修订历史：
  *
  * ===================================================
  **/
 
-public class PhotoMenuDetailPager extends BaseMenuDetailPager {
-    public PhotoMenuDetailPager(Activity activity) {
+public class TopicMenuDetailPager extends BaseMenuDetailPager {
+    public TopicMenuDetailPager(Activity activity) {
         super(activity);
     }
 
@@ -35,7 +35,7 @@ public class PhotoMenuDetailPager extends BaseMenuDetailPager {
     public View initViews() {
 
         TextView text = new TextView(mActivity);
-        text.setText("菜单详情页-组图");
+        text.setText("菜单详情页-专题");
         text.setTextSize(25);
         text.setTextColor(Color.RED);
         text.setGravity(Gravity.CENTER);

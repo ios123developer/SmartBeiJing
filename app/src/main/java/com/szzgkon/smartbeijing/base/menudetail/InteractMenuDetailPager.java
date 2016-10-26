@@ -1,4 +1,4 @@
-package com.szzgkon.smartbeijing.menudetail;
+package com.szzgkon.smartbeijing.base.menudetail;
 
 import android.app.Activity;
 import android.graphics.Color;

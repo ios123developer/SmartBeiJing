@@ -1,8 +1,6 @@
 package com.szzgkon.smartbeijing.base.impl;
 
 import android.app.Activity;
-import android.view.Gravity;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -17,10 +15,10 @@ import com.szzgkon.smartbeijing.base.BasePager;
 import com.szzgkon.smartbeijing.domain.NewsData;
 import com.szzgkon.smartbeijing.fragment.LeftMenuFragment;
 import com.szzgkon.smartbeijing.global.GlobalContants;
-import com.szzgkon.smartbeijing.menudetail.InteractMenuDetailPager;
-import com.szzgkon.smartbeijing.menudetail.NewsMenuDetailPager;
-import com.szzgkon.smartbeijing.menudetail.PhotoMenuDetailPager;
-import com.szzgkon.smartbeijing.menudetail.TopicMenuDetailPager;
+import com.szzgkon.smartbeijing.base.menudetail.InteractMenuDetailPager;
+import com.szzgkon.smartbeijing.base.menudetail.NewsMenuDetailPager;
+import com.szzgkon.smartbeijing.base.menudetail.PhotoMenuDetailPager;
+import com.szzgkon.smartbeijing.base.menudetail.TopicMenuDetailPager;
 
 import java.util.ArrayList;
 
@@ -45,6 +43,8 @@ import java.util.ArrayList;
 public class NewsCenterPager extends BasePager{
 
     private ArrayList<BaseMenuDetailPager> mPages;//4个菜单详情页的集合
+    private NewsData mNewsData;
+
     public NewsCenterPager(Activity activity) {
         super(activity);
     }
@@ -53,20 +53,12 @@ public class NewsCenterPager extends BasePager{
     public void initData() {
 
         tvTitle.setText("新闻");
-        TextView text = new TextView(mActivity);
 
         setSlidingMenuEnable(true);//打开侧边栏
 
 
-        text.setText("新闻");
-        text.setTextSize(25);
-        text.setGravity(Gravity.CENTER);
-
-
-        //向framelayout中动态添加布局
-        flContent.addView(text);
-
         getDataFromServer();
+
     }
 
     /**
@@ -119,25 +111,30 @@ public class NewsCenterPager extends BasePager{
     private void paserData(String result) {
         Gson gson = new Gson();
 
-        NewsData data = gson.fromJson(result, NewsData.class);
+        mNewsData = gson.fromJson(result, NewsData.class);
 
-        System.out.println("解析结果：" + data);
+        System.out.println("解析结果：" + mNewsData);
 
         MainActivity mainUi = (MainActivity) mActivity;
 
 
         LeftMenuFragment leftMenuFragment = mainUi.getLeftMenuFragment();
 
-        leftMenuFragment.setMenuData(data);
+        leftMenuFragment.setMenuData(mNewsData);
 
 
         //准备4个菜单详情页
 
         mPages = new ArrayList<BaseMenuDetailPager>();
-        mPages.add(new NewsMenuDetailPager(mActivity));
+        mPages.add(new NewsMenuDetailPager(mActivity,
+                mNewsData.data.get(0).children));
         mPages.add(new TopicMenuDetailPager(mActivity));
         mPages.add(new PhotoMenuDetailPager(mActivity));
         mPages.add(new InteractMenuDetailPager(mActivity));
+
+
+        setCuttentMenuDetailPager(0);//设置菜单详情页-新闻为默认当前页
+
     }
 
     /**
@@ -148,6 +145,12 @@ public class NewsCenterPager extends BasePager{
         BaseMenuDetailPager pager = mPages.get(position);//获取当前要显示的菜单详情页
         flContent.removeAllViews();//清楚之前的布局
         flContent.addView(pager.mRootView);//将菜单详情页的布局设置给帧布局
+
+        //设置当前页的标题
+        NewsData.NewsMenuData menuData = mNewsData.data.get(position);
+        tvTitle.setText(menuData.title);
+
+
     }
 
 }
