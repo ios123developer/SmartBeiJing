@@ -4,6 +4,8 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
+    useLibrary 'org.apache.http.legacy'
+
     defaultConfig {
         applicationId "com.szzgkon.smartbeijing"
         minSdkVersion 14
@@ -26,4 +28,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
     compile files('libs/xUtils-2.6.14.jar')
+    compile files('libs/gson-2.3.1.jar')
 }

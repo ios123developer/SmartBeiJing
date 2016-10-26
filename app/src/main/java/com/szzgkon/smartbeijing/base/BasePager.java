@@ -54,8 +54,21 @@ public class BasePager {
             flContent = (FrameLayout) mRootView.findViewById(R.id.fl_content);
 
         btnMenu = (ImageButton)mRootView.findViewById(R.id.btn_menu);
-    }
 
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleSlidingMenu();
+            }
+        });
+    }
+    //切换SlidingMenu的状态
+    private void toggleSlidingMenu() {
+
+        MainActivity mainUi = (MainActivity)mActivity;
+        SlidingMenu slidingMenu = mainUi.getSlidingMenu();
+        slidingMenu.toggle();//切换状态，显示时隐藏，隐藏时显示
+    }
 
 
     /**

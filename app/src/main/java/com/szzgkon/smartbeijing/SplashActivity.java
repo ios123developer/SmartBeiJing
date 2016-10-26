@@ -47,7 +47,7 @@ public class SplashActivity extends Activity {
 
             //渐变动画
         AlphaAnimation alpha = new AlphaAnimation(0,1);
-        alpha.setDuration(1000);//时间
+        alpha.setDuration(2000);//时间
         alpha.setFillAfter(true);//保持动画状态
 
 
