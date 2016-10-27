@@ -150,6 +150,8 @@ public class NewsCenterPager extends BasePager{
         NewsData.NewsMenuData menuData = mNewsData.data.get(position);
         tvTitle.setText(menuData.title);
 
+        pager.initData();//初始化当前页面的数据
+
 
     }
 

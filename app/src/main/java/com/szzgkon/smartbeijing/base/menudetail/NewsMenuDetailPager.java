@@ -10,6 +10,7 @@ import com.szzgkon.smartbeijing.R;
 import com.szzgkon.smartbeijing.base.BaseMenuDetailPager;
 import com.szzgkon.smartbeijing.base.TabDetailPager;
 import com.szzgkon.smartbeijing.domain.NewsData;
+import com.viewpagerindicator.TabPageIndicator;
 
 import java.util.ArrayList;
 
@@ -36,8 +37,14 @@ public class NewsMenuDetailPager extends BaseMenuDetailPager {
     private ViewPager mViewPager;
 
     private ArrayList<TabDetailPager> mPagerList;
+
+    private ArrayList<NewsData.NewsTabData> mNewsTabData;//页签网络数据
+    private TabPageIndicator mIndicator;
+
     public NewsMenuDetailPager(Activity activity, ArrayList<NewsData.NewsTabData> children) {
         super(activity);
+
+        mNewsTabData = children;
     }
 
     @Override
@@ -47,6 +54,10 @@ public class NewsMenuDetailPager extends BaseMenuDetailPager {
 
          mViewPager = (ViewPager) view.findViewById(R.id.vp_menu_detail);
 
+        //初始化自定义控件TabPageIndicator
+
+        mIndicator = (TabPageIndicator) view.findViewById(R.id.indicator);
+
         return view;
     }
 
@@ -55,14 +66,29 @@ public class NewsMenuDetailPager extends BaseMenuDetailPager {
 
         mPagerList = new ArrayList<TabDetailPager>();
 
+        //初始化页签数据
+        for (int i = 0; i < mNewsTabData.size(); i++) {
+            TabDetailPager pager = new TabDetailPager(mActivity,mNewsTabData.get(i));
+
+            mPagerList.add(pager);
+        }
+
+            mViewPager.setAdapter(new MenuDetailAdapter());
+
+            mIndicator.setViewPager(mViewPager);//必须在setAdapter方法之后才可以调用此方法
 
     }
 
     class MenuDetailAdapter extends PagerAdapter{
 
         @Override
+        public CharSequence getPageTitle(int position) {
+            return mNewsTabData.get(position).title;
+        }
+
+        @Override
         public int getCount() {
-            return 0;
+            return mPagerList.size();
         }
 
         @Override
@@ -72,7 +98,14 @@ public class NewsMenuDetailPager extends BaseMenuDetailPager {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            return super.instantiateItem(container, position);
+           TabDetailPager pager = mPagerList.get(position);
+
+            container.addView(pager.mRootView);
+
+            pager.initData();
+
+
+            return pager.mRootView;
         }
 
         @Override

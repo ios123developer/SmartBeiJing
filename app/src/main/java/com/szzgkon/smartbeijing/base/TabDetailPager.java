@@ -7,6 +7,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.szzgkon.smartbeijing.domain.NewsData;
+
 /**
  * ===================================================
  *
@@ -27,19 +29,27 @@ import android.widget.TextView;
 
 public class TabDetailPager extends BaseMenuDetailPager{
 
+    NewsData.NewsTabData mTabData;
+    private TextView tvText;
 
-    public TabDetailPager(Activity activity) {
+    public TabDetailPager(Activity activity, NewsData.NewsTabData newsTabData) {
         super(activity);
+        mTabData = newsTabData;
     }
 
     @Override
     public View initViews() {
-        TextView text = new TextView(mActivity);
-        text.setText("页签详情页");
-        text.setTextColor(Color.RED);
-        text.setTextSize(25);
-        text.setGravity(Gravity.CENTER);
+        tvText = new TextView(mActivity);
+        tvText.setText("页签详情页");
+        tvText.setTextColor(Color.RED);
+        tvText.setTextSize(25);
+        tvText.setGravity(Gravity.CENTER);
 
-        return text;
+        return tvText;
+    }
+
+    @Override
+    public void initData() {
+        tvText.setText(mTabData.title);
     }
 }

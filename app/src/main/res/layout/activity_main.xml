@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fl_content"
-    tools:context="com.szzgkon.smartbeijing.MainActivity">
+    tools:context="com.szzgkon.smartbeijing.MainActivity"
+    android:background="#fff">
 
 
 

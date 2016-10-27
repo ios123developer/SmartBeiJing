@@ -33,6 +33,17 @@ public class NoScrollViewPager extends ViewPager{
         super(context, attrs);
     }
 
+
+    /**
+     * 表示事件是否拦截,返回false，表示不拦截
+     * @param ev
+     * @return
+     */
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return false;
+    }
+
     /**
      * 重写onTouchEvent方法，什么都不做
      * @param ev
