@@ -16,6 +16,7 @@ import com.szzgkon.smartbeijing.base.impl.HomePager;
 import com.szzgkon.smartbeijing.base.impl.NewsCenterPager;
 import com.szzgkon.smartbeijing.base.impl.SettingPager;
 import com.szzgkon.smartbeijing.base.impl.SmartServicePager;
+import com.szzgkon.smartbeijing.view.NoScrollViewPager;
 
 import java.util.ArrayList;
 
@@ -47,7 +48,7 @@ public class ContentFragment extends BaseFragment {
     private RadioGroup rgGroup;
 
     @ViewInject(R.id.vp_content)
-    private ViewPager mViewPager;
+    private NoScrollViewPager mViewPager;
 
     private ArrayList<BasePager> mPagerList;
 

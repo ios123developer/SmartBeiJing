@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/zhangyongke/Desktop/SmartBeiJing/library/src/main/assets"/><source path="/Users/zhangyongke/Desktop/SmartBeiJing/library/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/zhangyongke/Desktop/SmartBeiJing/library/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/zhangyongke/Desktop/SmartBeijing/library/src/main/assets"/><source path="/Users/zhangyongke/Desktop/SmartBeijing/library/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/zhangyongke/Desktop/SmartBeijing/library/src/debug/assets"/></dataSet></merger>

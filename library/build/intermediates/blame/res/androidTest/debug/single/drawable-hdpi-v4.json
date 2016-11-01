@@ -1,26 +1,30 @@
 [
     {
-        "merged": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_unselected_pressed_holo.9.png",
-        "source": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_unselected_pressed_holo.9.png"
+        "merged": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_unselected_pressed_holo.9.png",
+        "source": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_unselected_pressed_holo.9.png"
     },
     {
-        "merged": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_selected_pressed_holo.9.png",
-        "source": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_selected_pressed_holo.9.png"
+        "merged": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_selected_focused_holo.9.png",
+        "source": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_selected_focused_holo.9.png"
     },
     {
-        "merged": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_unselected_focused_holo.9.png",
-        "source": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_unselected_focused_holo.9.png"
+        "merged": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_unselected_focused_holo.9.png",
+        "source": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_unselected_focused_holo.9.png"
     },
     {
-        "merged": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_selected_holo.9.png",
-        "source": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_selected_holo.9.png"
+        "merged": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/news_tab_item_bg_select.9.png",
+        "source": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/news_tab_item_bg_select.9.png"
     },
     {
-        "merged": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_selected_focused_holo.9.png",
-        "source": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_selected_focused_holo.9.png"
+        "merged": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_unselected_holo.9.png",
+        "source": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_unselected_holo.9.png"
     },
     {
-        "merged": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_unselected_holo.9.png",
-        "source": "/Users/zhangyongke/Desktop/SmartBeiJing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_unselected_holo.9.png"
+        "merged": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_selected_holo.9.png",
+        "source": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_selected_holo.9.png"
+    },
+    {
+        "merged": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/vpi__tab_selected_pressed_holo.9.png",
+        "source": "/Users/zhangyongke/Desktop/SmartBeijing/library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/vpi__tab_selected_pressed_holo.9.png"
     }
 ]

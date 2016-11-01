@@ -1,19 +1,15 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.szzgkon.smartbeijing.fragment.LeftMenuFragment"
-    android:background="#000">
-
+    android:background="#000" >
 
     <ListView
         android:id="@+id/lv_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:listSelector="@android:color/transparent"
         android:divider="@android:color/transparent"
-        android:listSelector="@android:color/transparent">
+        android:layout_marginTop="40dp" />
 
-    </ListView>
-
-</FrameLayout>
+</RelativeLayout>

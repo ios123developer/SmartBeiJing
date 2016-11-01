@@ -24,33 +24,27 @@ import android.view.MotionEvent;
  * ===================================================
  **/
 
-public class NoScrollViewPager extends ViewPager{
-    public NoScrollViewPager(Context context) {
-        super(context);
-    }
+public class NoScrollViewPager extends ViewPager {
 
     public NoScrollViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    public NoScrollViewPager(Context context) {
+        super(context);
+    }
 
-    /**
-     * 表示事件是否拦截,返回false，表示不拦截
-     * @param ev
-     * @return
-     */
+    // 表示事件是否拦截, 返回false表示不拦截, 可以让嵌套在内部的viewpager相应左右划的事件
     @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
+    public boolean onInterceptTouchEvent(MotionEvent arg0) {
         return false;
     }
 
     /**
-     * 重写onTouchEvent方法，什么都不做
-     * @param ev
-     * @return
+     * 重写onTouchEvent事件,什么都不用做
      */
     @Override
-    public boolean onTouchEvent(MotionEvent ev) {
+    public boolean onTouchEvent(MotionEvent arg0) {
         return false;
     }
 }

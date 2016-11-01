@@ -22,58 +22,41 @@ import java.util.ArrayList;
  **/
 public class NewsData {
 
-    //字段名字必须和服务器返回的字段一致，方便gson解析
     public int retcode;
-
     public ArrayList<NewsMenuData> data;
 
-
-    //侧边栏的数据对象
-   public class NewsMenuData{
-
-
+    // 侧边栏数据对象
+    public class NewsMenuData {
         public String id;
-
         public String title;
-
         public int type;
-
         public String url;
 
         public ArrayList<NewsTabData> children;
 
         @Override
         public String toString() {
-            return "NewsMenuData{" +
-                    "title='" + title + '\'' +
-                    ", children=" + children +
-                    '}';
+            return "NewsMenuData [title=" + title + ", children=" + children
+                    + "]";
         }
-
     }
-    //新闻页面下11个子页签的数据对象
-   public class NewsTabData{
 
+    // 新闻页面下11个子页签的数据对象
+    public class NewsTabData {
         public String id;
-
         public String title;
-
         public int type;
-
         public String url;
 
         @Override
         public String toString() {
-            return "NewsTabData{" +
-                    "title='" + title + '\'' +
-                    '}';
+            return "NewsTabData [title=" + title + "]";
         }
-
-
     }
 
     @Override
     public String toString() {
-        return "NewsData [data= " + data + "] ";
+        return "NewsData [data=" + data + "]";
     }
+
 }
