@@ -33,6 +33,14 @@ public class NetCacheUtils {
 
     private ImageView ivPic;
     private String url;
+    private LoaclCacheUtils mLocalCacheUtils;
+
+    private MemoryCacheUtils mMemoryCacheUtils;
+
+    public NetCacheUtils(LoaclCacheUtils localCacheUtils, MemoryCacheUtils memoryCacheUtils) {
+        mLocalCacheUtils = localCacheUtils;
+         mMemoryCacheUtils = memoryCacheUtils;
+    }
 
     /**
      * 从网络下载图片
@@ -62,7 +70,11 @@ public class NetCacheUtils {
 
             ivPic = (ImageView) params[0];
             url = (String) params[1];
-            return null;
+
+            ivPic.setTag(url);//将url和imageview绑定
+
+
+            return downloadBitmap(url);
         }
 
 
@@ -81,7 +93,22 @@ public class NetCacheUtils {
          */
         @Override
         protected void onPostExecute(Bitmap result) {
-            super.onPostExecute(result);
+
+            if(result!= null){
+
+                String bindUrl = (String) ivPic.getTag();
+                    if(url.equals(bindUrl)){//确保设定给了正确的imageview
+
+                        ivPic.setImageBitmap(result);
+
+
+
+                        mLocalCacheUtils.setBitmapToLocal(url,result);//将图片保存在本地
+                        mMemoryCacheUtils.setBitmapTopMemory(url,result);//将图片保存在内存中
+                        System.out.println("从网络上获取图片啦");
+                    }
+            }
+
         }
     }
 
