@@ -1,6 +1,8 @@
 package com.szzgkon.smartbeijing.base.impl;
 
 import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -12,13 +14,14 @@ import com.lidroid.xutils.http.client.HttpRequest;
 import com.szzgkon.smartbeijing.MainActivity;
 import com.szzgkon.smartbeijing.base.BaseMenuDetailPager;
 import com.szzgkon.smartbeijing.base.BasePager;
-import com.szzgkon.smartbeijing.domain.NewsData;
-import com.szzgkon.smartbeijing.fragment.LeftMenuFragment;
-import com.szzgkon.smartbeijing.global.GlobalContants;
 import com.szzgkon.smartbeijing.base.menudetail.InteractMenuDetailPager;
 import com.szzgkon.smartbeijing.base.menudetail.NewsMenuDetailPager;
 import com.szzgkon.smartbeijing.base.menudetail.PhotoMenuDetailPager;
 import com.szzgkon.smartbeijing.base.menudetail.TopicMenuDetailPager;
+import com.szzgkon.smartbeijing.domain.NewsData;
+import com.szzgkon.smartbeijing.fragment.LeftMenuFragment;
+import com.szzgkon.smartbeijing.global.GlobalContants;
+import com.szzgkon.smartbeijing.utils.CacheUtils;
 
 import java.util.ArrayList;
 
@@ -56,6 +59,17 @@ public class NewsCenterPager extends BasePager{
 
         setSlidingMenuEnable(true);//打开侧边栏
 
+        String cache = CacheUtils.getCache(GlobalContants.CATEGORIES_URL, mActivity);
+
+
+          if(!TextUtils.isEmpty(cache)){//如果缓存存在，直接解析数据，无需访问网络
+
+
+
+              paserData(cache);
+          }else {
+              getDataFromServer();
+          }
 
         getDataFromServer();
 
@@ -65,8 +79,6 @@ public class NewsCenterPager extends BasePager{
      * 从服务器获取数据
      */
     private void getDataFromServer() {
-
-
 
         HttpUtils utils = new HttpUtils();
 
@@ -85,8 +97,12 @@ public class NewsCenterPager extends BasePager{
 
                 System.out.println(result);
 
+
                 //解析数据
                 paserData(result);
+
+                //设置缓存
+                CacheUtils.setCache(GlobalContants.CATEGORIES_URL,result,mActivity);
 
             }
 
@@ -129,7 +145,7 @@ public class NewsCenterPager extends BasePager{
         mPages.add(new NewsMenuDetailPager(mActivity,
                 mNewsData.data.get(0).children));
         mPages.add(new TopicMenuDetailPager(mActivity));
-        mPages.add(new PhotoMenuDetailPager(mActivity));
+        mPages.add(new PhotoMenuDetailPager(mActivity,btnPhoto));
         mPages.add(new InteractMenuDetailPager(mActivity));
 
 
@@ -151,6 +167,12 @@ public class NewsCenterPager extends BasePager{
         tvTitle.setText(menuData.title);
 
         pager.initData();//初始化当前页面的数据
+
+        if(pager instanceof PhotoMenuDetailPager){
+            btnPhoto.setVisibility(View.VISIBLE);
+        }else {
+            btnPhoto.setVisibility(View.GONE);
+        }
 
 
     }

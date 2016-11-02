@@ -5,9 +5,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -43,7 +45,6 @@ import java.util.ArrayList;
  * 页签详情页
  *
  * @author Kevin
- *
  */
 public class TabDetailPager extends BaseMenuDetailPager implements
         ViewPager.OnPageChangeListener {
@@ -245,6 +246,31 @@ public class TabDetailPager extends BaseMenuDetailPager implements
                 lvList.setAdapter(mNewsAdapter);
             }
 
+            if (mHandler == null) {
+                mHandler = new Handler() {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        System.out.println("handle  ...........");
+
+                        int currentItem = mViewPager.getCurrentItem();
+                        if (currentItem < mTopNewsList.size() - 1) {
+
+                            currentItem++;
+
+                        } else {
+                            currentItem = 0;
+                        }
+
+                        mViewPager.setCurrentItem(currentItem);//切换到下一个界面
+
+                        mHandler.sendEmptyMessageDelayed(0, 3000);//继续延时3秒发消息，形成循环
+
+                    }
+                };
+
+                mHandler.sendEmptyMessageDelayed(0, 3000);//延时3秒发消息
+            }
+
 
         } else {// 如果是加载下一页,需要将数据追加给原来的集合
             ArrayList<TabData.TabNewsData> news = mTabDetailData.data.news;
@@ -255,9 +281,6 @@ public class TabDetailPager extends BaseMenuDetailPager implements
 
     /**
      * 头条新闻适配器
-     *
-     *
-     *
      */
     class TopNewsAdapter extends PagerAdapter {
 
@@ -288,6 +311,8 @@ public class TabDetailPager extends BaseMenuDetailPager implements
 
             container.addView(image);
 
+            image.setOnTouchListener(new TopNewsTouchListener());//设置触摸监听
+
 
             return image;
         }
@@ -298,13 +323,43 @@ public class TabDetailPager extends BaseMenuDetailPager implements
         }
     }
 
+    /**
+     * 头条新闻的触摸监听
+     */
+    class TopNewsTouchListener implements View.OnTouchListener {
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN://按下停止轮播
+
+                    mHandler.removeCallbacksAndMessages(null);
+                    break;
+                case MotionEvent.ACTION_CANCEL://事件取消也要继续发消息
+
+                    mHandler.sendEmptyMessageDelayed(0, 3000);
+
+                    break;
+
+                case MotionEvent.ACTION_UP://抬起继续让handler发消息
+
+                    mHandler.sendEmptyMessageDelayed(0, 3000);
+
+                    break;
+                default:
+                    break;
+
+
+            }
+
+
+            return true;
+        }
+    }
 
 
     /**
      * 新闻列表的适配器
-     *
-     *
-     *
      */
     class NewsAdapter extends BaseAdapter {
 

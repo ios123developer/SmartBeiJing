@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * 组图数据
  * 
- * @author Kevin
+ *
  * 
  */
 public class PhotosData {
