@@ -127,7 +127,14 @@ public class NetCacheUtils {
             int responseCode = conn.getResponseCode();
             if (responseCode == 200) {
                 InputStream inputStream = conn.getInputStream();
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+                //图片压缩
+                BitmapFactory.Options option = new BitmapFactory.Options();
+
+                option.inSampleSize = 2;//宽高都压缩为原来的二分之一，这个值需要根据图片要展示的大小来确定
+
+                option.inPreferredConfig = Bitmap.Config.RGB_565;//设置图片的压缩格式
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream,null,option);
                 return bitmap;
             }
 
