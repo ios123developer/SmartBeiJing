@@ -1,6 +1,5 @@
 package com.szzgkon.smartbeijing;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
@@ -12,16 +11,40 @@ import android.widget.RelativeLayout;
 
 import com.szzgkon.smartbeijing.utils.PrefUtils;
 
-public class SplashActivity extends Activity {
+import cn.jpush.android.api.InstrumentedActivity;
+import cn.jpush.android.api.JPushInterface;
+
+public class SplashActivity extends InstrumentedActivity {
 
     private RelativeLayout rl_root;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+
         setContentView(R.layout.activity_splash);
 
         rl_root = (RelativeLayout)findViewById(R.id.rl_root);
         startAnim();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //极光推动统计代码
+        JPushInterface.onResume(this);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //极光推动统计代码
+        JPushInterface.onPause(this);
     }
 
     /**
